@@ -22,12 +22,22 @@ header { background:#000; padding:15px; font-size:22px; position:sticky; top:0; 
 
 .confete { position:fixed; width:8px; height:8px; top:-10px; animation: cair linear forwards; }
 @keyframes cair { to { transform: translateY(100vh); opacity:0; } }
+
+/* INPUT */
+#numeroVencedor {
+  background-color: #111;   /* fundo  #222 */
+  color: #111;           /* cor do texto #00ffcc digitado */
+  border: 2px solid #111;
+  padding: 10px;
+  border-radius: 8px;
+}
+
 </style>
 </head>
 
 <body>
 
-<header>🍀 Rifa da Sorte v0.1 💰</header>
+<header>🍀 Rifa da Sorte 🏆✨️v0.2</header>
 
 <div style="display:flex; justify-content:center; gap:30px; margin-top:20px;">
 <div>
@@ -44,8 +54,13 @@ header { background:#000; padding:15px; font-size:22px; position:sticky; top:0; 
 
 <button onclick="sortear()">🎯 Sortear</button>
 <button onclick="admin()">🔐 Admin</button>
+
+<!--
 <button onclick="compartilhar()">📲 Compartilhar</button>
+
 <button onclick="copiarPix()">Copiar Pix</button>
+
+-->
 
 <div class="admin" id="painel">
 📊 Disponíveis: <span id="disp">0</span> |
@@ -54,19 +69,19 @@ Pagos: <span id="pag">0</span>
 <br><button onclick="resetar()">🗑 Resetar</button>
 
 <button onclick="limparResultado()">🧹 Limpar Resultado</button>
-<button onclick="baixarBackup()">📥 Baixar Backup</button>
+<button onclick="baixarBackup()">📥 Baixar Bkp</button>
   
 <input type="file" id="fileInput" accept=".json">
-<button onclick="restaurarBackup()">♻️ Restaurar Backup</button>
+<button onclick="restaurarBackup()">♻️ Restaurar Bkp</button>
 <br><br>
 💰 Valor do prêmio:
 <input type="text" id="valorInput">
 <button onclick="salvarValor()">Salvar</button>
 
 <br><br>
-🍀
-<input type="text" id="numeroVencedor" placeholder="Ex: 07">
-<button onclick="salvarNumeroVencedor()">Salvar</button>
+BOA SORTE 🍀 🏆✨️:
+<input type="text" id="numeroVencedor" placeholder="BOA SORTE  🍀 🏆✨️:">
+<button onclick="salvarNumeroVencedor()"> 🏆✨️</button>
 </div>
 
 <button onclick="toggleLista()">👥 Ver Compradores</button>
@@ -172,6 +187,18 @@ function salvarFirebase(){
     numeroVencedor: numeroVencedorAdmin
   });
 }
+////////////////
+// VALOR
+function salvarValor(){
+  let novo = document.getElementById("valorInput").value;
+  if(novo){
+    valorPremio = novo;
+    salvarFirebase();
+    alert("Valor atualizado!");
+  }
+}
+
+//////////////
 
 function salvarNumeroVencedor(){
   let num = document.getElementById("numeroVencedor").value;
@@ -184,7 +211,7 @@ function salvarNumeroVencedor(){
 
 function falarPremio(nome, num){
   let msg = new SpeechSynthesisUtterance(
-    `Parabéns ${nome || "ganhador"}! Número ${num}. Você ganhou ${valorPremio}`
+    `Parabéns ${nome || "ganhador"}! Número ${num}. Você ganhou ${valorPremio}. na Rifa Trevo da Sorte`
   );
   msg.lang="pt-BR";
   speechSynthesis.speak(msg);
@@ -214,11 +241,13 @@ function confete(){
     setTimeout(()=>c.remove(),4000);
   }
 }
-
+/*
 function compartilhar(){
   let texto = `🏆 Número sorteado: ${resultado}`;
   window.open(`https://wa.me/?text=${encodeURIComponent(texto)}`);
 }
+
+*/
 
 function toggleLista(){
   let box = document.getElementById("listaBox");
