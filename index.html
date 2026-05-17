@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>🎰 Trevo da Sorte VIP</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+</head>
+<body>
+
+<div class="efeito-bg"></div>
+
+<header>
+
+<h1>🍀 TREVO DA SORTE 🏆✨ VIP</h1>
+
+<p>
+Cassino Premium • Sorteios Ao Vivo
+</p>
+
+</header>
+
+<section class="topo">
+
+<div class="painel">
+
+<h2>🎰 Sorteador VIP</h2>
+
+<div id="contador">10</div>
+
+<div id="numeroAnimado">0</div>
+
+<button id="btnSortear"
+onclick="sortearN1()">
+
+🍀 INICIAR SORTEIO
+
+</button>
+
+<div class="data-box">
+
+📅 Data do Sorteio:
+
+<p id="dataSorteio"></p>
+
+</div>
+
+</div>
+
+<!--
+
+<div class="centro">
+
+<h2 class="texto-vip">
+✨ Boa sorte ✨
+</h2>
+
+<div class="bolas"
+id="bolas"></div>
+
+<h2 id="vencedor"></h2>
+
+</div>
+-->
+
+<div class="painel">
+
+<h2>🏆 Bilhete Campeão</h2>
+
+<div id="bilheteSorteado"></div>
+
+<div id="nomeGanhador"></div>
+
+</div>
+
+</section>
+
+
+
+
+
+<div class="centro">
+
+<h2 class="texto-vip">
+✨ Boa sorte ✨
+</h2>
+
+<div class="bolas"
+id="bolas"></div>
+
+<h2 id="vencedor"></h2>
+
+</div>
+
+
+
+
+<section class="mensagem">
+
+<marquee>
+
+🎰 Escolha e Reserve já seus bilhetes • Boa sorte 🍀
+
+
+</marquee>
+
+</section>
+
+<div
+id="menuAdmin"
+class="menu-admin">
+
+<button onclick="fazerBackup()">
+💾 Backup Geral
+</button>
+
+<button onclick="restaurarBackup()">
+♻ Restaurar Backup
+</button>
+
+<button onclick="liberarTodos()">
+🟢 Liberar Todos
+</button>
+
+<button onclick="alterarData()">
+📅 Alterar Data
+</button>
+
+</div>
+
+<div class="grid"
+id="tickets"></div>
+
+<button class="admin-flutuante"
+onclick="abrirAdmin()">
+
+<i class="fa-solid fa-lock"></i>
+
+</button>
+
+<!-- conectando farebase-->
+
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+<!--====≈==≈=================-->
+<script src="script.js"></script>
+
+</body>
+</html>
