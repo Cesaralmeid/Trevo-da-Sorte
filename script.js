@@ -255,7 +255,7 @@ function abrirAdmin(){
 let senha=
 prompt("Senha admin");
 
-if(senha==="1234"){
+if(senha==="1234@"){
 
 admin=true;
 
