@@ -33,6 +33,8 @@ document.getElementById("tickets");
 
 let banco={};
 
+let numerosManuais = [];
+
 /* ==================== */
 
 function criarBilhetes(){
@@ -402,6 +404,76 @@ alert('Erro ao compartilhar');
 
 /* ==================== */
 
+
+function configurarSorteioManual(){
+
+let entrada = prompt(
+`EXCLUIR TUDO ?
+
+Exemplo:
+☆,☆,☆,☆
+ou -- Cancelar
+
+CONFIRMAR EM OK`
+
+
+);
+
+if(!entrada) return;
+
+/* volta automático */
+if(
+entrada.trim() === "--"
+){
+
+numerosManuais = [];
+
+alert(
+"Sorteio automático ativado"
+);
+
+return;
+}
+
+let numeros = entrada
+.split(",")
+.map(n => parseInt(n.trim()))
+.filter(n => !isNaN(n) && n >= 0 && n <= 9);
+
+/* validar */
+if(numeros.length !== 4){
+
+alert(
+"Digite exatamente 4 números"
+);
+
+return;
+}
+
+/* impedir repetidos */
+let unico =
+[...new Set(numeros)];
+
+if(unico.length !== 4){
+
+alert(
+"Não repita números"
+);
+
+return;
+}
+
+numerosManuais = numeros;
+
+alert(
+"Sorteio manual configurado:\n" +
+numeros.join(" - ")
+);
+
+}
+
+
+
 async function sortearN1(){
 
 let contador=
@@ -461,6 +533,16 @@ clearInterval(animacao);
 
 let final;
 
+/* sorteio manual */
+if(
+numerosManuais.length === 4
+){
+
+final =
+numerosManuais[rodada];
+
+}else{
+
 let tentativas = 0;
 
 do{
@@ -468,13 +550,14 @@ do{
 final =
 Math.floor(Math.random()*10);
 
- tentativas++;
+tentativas++;
 
 }while(
- numeros.includes(final)
- && tentativas < 100
+numeros.includes(final)
+&& tentativas < 100
 );
 
+}
 
 
 numeros.push(final);
